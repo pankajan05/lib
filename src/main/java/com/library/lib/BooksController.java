@@ -17,4 +17,9 @@ public class BooksController {
         mv.setViewName("books");
         return mv;
     }
+
+    @RequestMapping("/book/add")
+    public String addbook(){
+        return "AddBook";
+    }
 }
