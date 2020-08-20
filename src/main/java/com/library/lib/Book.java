@@ -1,6 +1,16 @@
 package com.library.lib;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Books")
 public class Book {
+    @Id
+    @GeneratedValue
     private String ISBN;
     private String BookName;
     private String Category;
