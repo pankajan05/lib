@@ -1,5 +1,6 @@
 package com.library.lib;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,10 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class BooksController {
+    @Autowired
+    BooksRepo repo;
+
+    /*
     @RequestMapping("books")
     public ModelAndView books(@RequestParam("cname") String coursename){
         ModelAndView mv = new ModelAndView();
@@ -20,8 +25,28 @@ public class BooksController {
         return mv;
     }
 
+     */
+
+    @RequestMapping("/")
+    public String details(){
+        return "AddBook";
+    }
+
+    @RequestMapping("/details")
+    public String details(Book book){
+        System.out.print(book);
+        repo.save(book);
+        return "AddBook";
+    }
+
+    @RequestMapping("/viewDetails")
+    public String getDetails(Book book){
+        return "ViewBook";
+    }
+
+    /*
     @RequestMapping("add")
-    public String addbook(){
+    public String addBook(){
         return "AddBook";
     }
 
@@ -41,4 +66,5 @@ public class BooksController {
         return "ViewBook";
 
     }
+     */
 }
