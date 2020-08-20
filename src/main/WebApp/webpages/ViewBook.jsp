@@ -5,11 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-Book ISBN : ${ISBN} <br>
-Book Name : ${BookName} <br>
-Book : ${Category} <br>
-Book : ${Author} <br>
-Book : ${PublicationDate} <br>
-Book : ${Quantity} <br>
+<h1>Book Details</h1>
+
+Book details : ${book} <br>
+
 </body>
 </html>

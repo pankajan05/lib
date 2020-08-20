@@ -4,10 +4,13 @@ import com.library.lib.Repository.BooksRepo;
 import com.library.lib.Model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class BooksController {
+public class        BooksController {
     @Autowired
     BooksRepo repo;
 
@@ -34,10 +37,19 @@ public class BooksController {
         return "AddBook";
     }
 
-    @RequestMapping("/viewDetails")
-    public String getDetails(Book book){
-        return "ViewBook";
+    @RequestMapping("/search")
+    public String getDetails(){
+        return "SearchBook";
     }
+
+    @PostMapping("/getdetails")
+    public ModelAndView getDetails(@RequestParam String ISBN){
+        ModelAndView mv = new ModelAndView("ViewBook");
+        Book book = repo.findById(ISBN).orElse(null);
+        mv.addObject(book);
+        return mv;
+    }
+
 
     /*
     @RequestMapping("add")
