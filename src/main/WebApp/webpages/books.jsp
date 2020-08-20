@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-welcome to the library management system
+welcome ${cname} to the library management system
 </body>
 </html>
