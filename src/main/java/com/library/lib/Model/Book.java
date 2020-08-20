@@ -1,4 +1,4 @@
-package com.library.lib;
+package com.library.lib.Model;
 
 
 import org.hibernate.annotations.GenericGenerator;
@@ -12,8 +12,6 @@ import javax.persistence.Table;
 @Table(name = "Books")
 public class Book {
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
     private String ISBN;
     private String BookName;
     private String Category;
