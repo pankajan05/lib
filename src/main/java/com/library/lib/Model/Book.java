@@ -3,10 +3,8 @@ package com.library.lib.Model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Books")
@@ -15,7 +13,8 @@ public class Book {
     private String ISBN;
     private String BookName;
     private String Category;
-    private String Author;
+    @ManyToMany(mappedBy = "Books")
+    private Set<Author> Author;
     private String PublicationDate;
     private int Quantity;
 
@@ -43,11 +42,11 @@ public class Book {
         Category = category;
     }
 
-    public String getAuthor() {
+    public Set getAuthor() {
         return Author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Set author) {
         Author = author;
     }
 

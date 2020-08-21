@@ -3,10 +3,10 @@ package com.library.lib.Model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.glassfish.jersey.server.ManagedAsyncExecutor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,4 +20,7 @@ public class Author {
     private String AuthorAddress;
     private String AuthorPhoneNumber;
     private String EmailAddress;
+    @ManyToMany
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "ISBN"), inverseJoinColumns = @JoinColumn(name = "AuthorId"))
+    private Set<Book> Books;
 }
