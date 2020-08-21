@@ -4,6 +4,7 @@ import com.library.lib.Repository.BooksRepo;
 import com.library.lib.Model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +49,13 @@ public class        BooksController {
         Book book = repo.findById(ISBN).orElse(null);
         mv.addObject(book);
         return mv;
+    }
+
+    @RequestMapping("/books")
+    public String getBooks(Model model){
+        model.addAttribute("books", repo.findAll());
+
+        return "books";
     }
 
 

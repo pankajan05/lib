@@ -5,6 +5,7 @@ import com.library.lib.Model.Book;
 import com.library.lib.Repository.AuthorRepo;
 import com.library.lib.Repository.BooksRepo;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 
 public class BootStrapData implements CommandLineRunner {
