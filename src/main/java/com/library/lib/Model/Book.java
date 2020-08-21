@@ -3,10 +3,10 @@ package com.library.lib.Model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "Books")
@@ -15,9 +15,18 @@ public class Book {
     private String ISBN;
     private String BookName;
     private String Category;
-    private String Author;
+    @ManyToMany(mappedBy = "Books")
+    private Set<Author> Author = new HashSet<>();
     private String PublicationDate;
     private int Quantity;
+
+    public Book(String ISBN, String bookName, String category, String publicationDate, int quantity) {
+        this.ISBN = ISBN;
+        BookName = bookName;
+        Category = category;
+        PublicationDate = publicationDate;
+        Quantity = quantity;
+    }
 
     public String getISBN() {
         return ISBN;
@@ -43,11 +52,11 @@ public class Book {
         Category = category;
     }
 
-    public String getAuthor() {
+    public Set getAuthor() {
         return Author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Set author) {
         Author = author;
     }
 
@@ -77,5 +86,18 @@ public class Book {
                 ", PublicationDate='" + PublicationDate + '\'' +
                 ", Quantity=" + Quantity +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(ISBN, book.ISBN);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ISBN);
     }
 }

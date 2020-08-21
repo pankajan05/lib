@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NotAvailable</title>
 </head>
 <body>
-<h1>Book Details</h1>
-
-Book details : ${book} <br>
-
+<h1>The Book is not Available</h1>
 </body>
 </html>
