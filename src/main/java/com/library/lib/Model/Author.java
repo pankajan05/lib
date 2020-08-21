@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.glassfish.jersey.server.ManagedAsyncExecutor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -25,7 +26,15 @@ public class Author {
     private String EmailAddress;
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "ISBN"), inverseJoinColumns = @JoinColumn(name = "AuthorId"))
-    private Set<Book> Books;
+    private Set<Book> Books = new HashSet<>();
+
+    public Author(String authorId, String authorName, String authorAddress, String authorPhoneNumber, String emailAddress) {
+        AuthorId = authorId;
+        AuthorName = authorName;
+        AuthorAddress = authorAddress;
+        AuthorPhoneNumber = authorPhoneNumber;
+        EmailAddress = emailAddress;
+    }
 
     @Override
     public boolean equals(Object o) {

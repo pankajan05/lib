@@ -4,6 +4,7 @@ package com.library.lib.Model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,9 +16,17 @@ public class Book {
     private String BookName;
     private String Category;
     @ManyToMany(mappedBy = "Books")
-    private Set<Author> Author;
+    private Set<Author> Author = new HashSet<>();
     private String PublicationDate;
     private int Quantity;
+
+    public Book(String ISBN, String bookName, String category, String publicationDate, int quantity) {
+        this.ISBN = ISBN;
+        BookName = bookName;
+        Category = category;
+        PublicationDate = publicationDate;
+        Quantity = quantity;
+    }
 
     public String getISBN() {
         return ISBN;
