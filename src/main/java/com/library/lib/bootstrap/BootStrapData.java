@@ -7,7 +7,7 @@ import com.library.lib.Repository.BooksRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-
+@Component
 public class BootStrapData implements CommandLineRunner {
     private final AuthorRepo authorRepo;
     private final BooksRepo booksRepo;
