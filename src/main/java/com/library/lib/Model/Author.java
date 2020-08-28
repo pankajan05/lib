@@ -28,6 +28,8 @@ public class Author {
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "ISBN"), inverseJoinColumns = @JoinColumn(name = "AuthorId"))
     private Set<Book> Books = new HashSet<>();
 
+    public Author() { }
+
     public Author(String authorId, String authorName, String authorAddress, String authorPhoneNumber, String emailAddress) {
         AuthorId = authorId;
         AuthorName = authorName;

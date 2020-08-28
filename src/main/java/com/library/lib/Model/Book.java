@@ -20,6 +20,9 @@ public class Book {
     private String PublicationDate;
     private int Quantity;
 
+    public Book() {
+    }
+
     public Book(String ISBN, String bookName, String category, String publicationDate, int quantity) {
         this.ISBN = ISBN;
         BookName = bookName;
