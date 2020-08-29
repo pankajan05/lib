@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.glassfish.jersey.server.ManagedAsyncExecutor;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,11 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@AllArgsConstructor
-@Getter
-@Setter
 @ToString
-@Table(name = "Authors")
 public class Author {
     @Id
     private String AuthorId;
@@ -25,7 +20,7 @@ public class Author {
     private String AuthorPhoneNumber;
     private String EmailAddress;
     @ManyToMany
-    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "ISBN"), inverseJoinColumns = @JoinColumn(name = "AuthorId"))
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "author_id"), inverseJoinColumns = @JoinColumn(name = "isbn"))
     private Set<Book> Books = new HashSet<>();
 
     public Author() { }
@@ -36,6 +31,54 @@ public class Author {
         AuthorAddress = authorAddress;
         AuthorPhoneNumber = authorPhoneNumber;
         EmailAddress = emailAddress;
+    }
+
+    public String getAuthorId() {
+        return AuthorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        AuthorId = authorId;
+    }
+
+    public String getAuthorName() {
+        return AuthorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        AuthorName = authorName;
+    }
+
+    public String getAuthorAddress() {
+        return AuthorAddress;
+    }
+
+    public void setAuthorAddress(String authorAddress) {
+        AuthorAddress = authorAddress;
+    }
+
+    public String getAuthorPhoneNumber() {
+        return AuthorPhoneNumber;
+    }
+
+    public void setAuthorPhoneNumber(String authorPhoneNumber) {
+        AuthorPhoneNumber = authorPhoneNumber;
+    }
+
+    public String getEmailAddress() {
+        return EmailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        EmailAddress = emailAddress;
+    }
+
+    public Set<Book> getBooks() {
+        return Books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        Books = books;
     }
 
     @Override

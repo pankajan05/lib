@@ -20,15 +20,13 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        System.out.println("started in bootstrap");
         Author pankajan = new Author("A0032", "Pankajan", "Earlalai East, Earlalai, Jaffna.","+94 772958306", "pankajan@quadrate.lk");
-        Book life = new Book("B0023","Life","Life","23/09/2020",5);
-        pankajan.getBooks().add(life);
+        Book life = new Book("B0034","Life","Life","23/09/2020",5);
         life.getAuthor().add(pankajan);
-
         authorRepo.save(pankajan);
         booksRepo.save(life);
 
-        System.out.println("started in bootstrap");
-        System.out.println("Number of books added : " +booksRepo.count());
+        System.out.println("Number of books added : " + booksRepo.count());
     }
 }

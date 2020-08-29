@@ -1,7 +1,9 @@
 package com.library.lib.Model;
 
 
-import org.hibernate.annotations.GenericGenerator;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,7 +11,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "Books")
 public class Book {
     @Id
     private String ISBN;
@@ -22,6 +23,7 @@ public class Book {
 
     public Book() {
     }
+
 
     public Book(String ISBN, String bookName, String category, String publicationDate, int quantity) {
         this.ISBN = ISBN;
@@ -55,11 +57,11 @@ public class Book {
         Category = category;
     }
 
-    public Set getAuthor() {
+    public Set<com.library.lib.Model.Author> getAuthor() {
         return Author;
     }
 
-    public void setAuthor(Set author) {
+    public void setAuthor(Set<com.library.lib.Model.Author> author) {
         Author = author;
     }
 
